@@ -1,0 +1,300 @@
+body {
+  font-family: sans-serif;
+}
+#main_content{
+  display: flex;
+}
+img{
+  width: 100%;
+  height: auto;
+
+}
+#list{
+  width: 100%;
+  background-color: white;
+  overflow: auto;
+}
+
+a.link{
+  float:left;
+  padding: 12px;
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+  width: 259px; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center; /* If you want the text to be centered */
+     
+}
+
+.link:hover{
+  background-color: darkgrey;
+  color: black;
+
+}
+.link.active{
+  background-color: #04AA6D;
+
+}
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+  #list a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left; /* If you want the text to be left-aligned on small screens */
+  }
+}
+
+.list1{
+  margin:10px;
+  padding:0;
+  width: 405px;
+  height: 100%;
+  background-color: white;
+  line-height: 300%;
+  
+
+  
+}
+.list1{
+  height:fit-content;
+  border-style: groove;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+  border-right-width: thin;
+  border-left-width: thin;
+  border-top-width: thin;
+  border-bottom-width: thin;
+  border-bottom-left-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
+  
+}
+.menu-item{
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: 200%;
+  
+  
+}
+.menu-item {
+  
+  padding-left:15px;
+  border-bottom-style:groove;
+  border-bottom-width:thin;
+ 
+  
+}
+.menu-item:first-child{
+  background-color: DarkGrey;
+  color: black;
+  font-weight: bold;
+  border-bottom-width:thin;
+  border-bottom-style:groove;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+}
+.product{
+  border-bottom-style:groove;
+  border-bottom-width:thin;
+  
+}
+.menu-item:last-child{
+  border-bottom-style:none;
+  border-bottom-left-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
+  
+
+}
+.menu-item:hover:not(:first-child){
+  background-color: darkgrey;
+  color:white
+}
+
+.list2{
+  height:fit-content;
+  margin:10px;
+  padding:0;
+  width:405px;
+  background-color: white;
+  line-height: 300%;
+  letter-spacing: 1px;
+  
+
+}
+.list2 {
+  border-style: groove;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+  border-right-width: thin;
+  border-left-width: thin;
+  border-top-width: thin;
+  border-bottom-width: thin;
+  border-bottom-left-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
+}
+.menu-company{
+  display:block;
+  color:#000;
+  padding:8px 16px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: 250%;
+  
+  
+}
+.menu-company:first-child{
+  background-color: DarkGrey;
+  color: black;
+  font-weight: bold;
+  border-bottom-width:thin;
+  border-bottom-style:groove;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+
+}
+.menu-company{
+  border-bottom-style:groove;
+  border-bottom-width:thin;
+}
+.menu-company:last-child{
+  border-bottom-style:none;
+  border-bottom-left-radius: 5px 5px;
+  border-bottom-right-radius:5px 5px;
+}
+.menu-company:hover:not(:first-child){
+  background-color: darkgrey;
+  color:white
+}
+#right_sidebar{
+  flex-grow: 1;
+  border-style: groove;
+  border-bottom-width: thin;
+  border-top-style: none;
+  border-left-width: thin;
+  border-right-width: thin;
+
+
+}
+.id{
+  background-color: DarkGrey;
+  color: black;
+  font-weight:bold ;
+  border-bottom-width:thin;
+  border-bottom-style:groove;
+  padding:8px 16px;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 10px;
+  margin-top: 10px;
+  margin-bottom:20px;
+  height: 50px;
+
+  
+}
+.card {
+  box-sizing: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-height: 300px;
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  margin-top:10px;
+  margin-left:30px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+
+}
+.hinh{
+  height:35%;
+  width:35%;
+  margin:auto;
+  padding:auto;
+}
+.price{
+  color: red;
+  font-size:22px
+
+}
+.but{
+  display:flex;
+  justify-content:center;
+}
+
+button:hover{
+  background-color: gray;
+  
+
+}
+
+.product-col{
+  height:300px;
+  margin-bottom:20px
+}
+.but-xem{
+  margin-right:10px;
+  margin-bottom: 20px;
+  border-style: none;
+  border-bottom-width:thin;;
+  border-right-width: thin;
+  border-top-width:thin;
+  border-left-width:thin ;
+}
+.but-mua{
+  margin-bottom: 20px;
+  border-style: none;
+  
+  border-bottom-width:thin;;
+  border-right-width: thin;
+  border-top-width:thin;
+  border-left-width:thin ;
+}
+.customers{
+  border-style:groove;
+  border-bottom-width: thin;
+  border-top-width:thin;
+  border-left-width:thin;
+  border-right-width: 0;
+  display:flex;
+  
+  width: 100%;
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:10px;
+  margin-right:10px
+}
+.text{
+  width:260px;
+  border-style:groove;
+  border-bottom-width: thin;
+  border-right-width:thin;
+  padding-left:15px;
+  padding-top:15px;
+  padding-bottom:15px;
+  font-weight:500;
+}
+.text:last-child{
+  border-right-width: none;
+  text-align: center;
+}
+.text-sum{
+  text-align: right;
+  border-style: groove;
+  border-right-width: thin;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-right: 5px;
+
+}
+.head{
+  background-color:darkgrey;
+  text-align: center;
+  font-weight:bold;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
