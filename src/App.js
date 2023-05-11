@@ -105,7 +105,7 @@ class Productable extends React.Component {
                   }}>
                     Xóa
                   </button>
-                  <button  className="but-xem"onClick={() => {
+                  <button className="but-xem" onClick={() => {
                     this.props.addProduct(product.name)
                   }}>
                     Thêm
@@ -246,11 +246,13 @@ export default class App extends React.Component {
         }],
     }
   }
-  deleteProduct(name) {
+  deleteProduct = (name) => {
+    console.log(this)
     const products = this.state.table.filter((product) => product.name !== name);
     this.setState({ table: products });
   }
-  addProduct(name) {
+  addProduct = (name) => {
+    console.log(this)
     let newTable = this.state.table.map((product) => {
       if (product.name == name) {
         product.quantity += 1;
@@ -293,5 +295,4 @@ export default class App extends React.Component {
 
   }
 
-}
 }
