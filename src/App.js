@@ -110,6 +110,12 @@ class Productable extends React.Component {
                   }}>
                     Thêm
                   </button>
+                  <button className="but-xem" onClick={() => {
+                    this.props.decreaseProduct(product.name)
+                  }}>
+                    Giảm
+                  </button>
+                  
                 </td>
               </tr>
 
@@ -257,9 +263,18 @@ export default class App extends React.Component {
       if (product.name == name) {
         product.quantity += 1;
       }
-      return product
+      return product;
     })
     this.setState({ table: newTable })
+  }
+  decreaseProduct = (name) =>{
+    let newTable1 = this.state.table.map((product) =>{
+      if(product.name == name){
+        product.quantity -=1;
+      }
+      return product;
+    })
+    this.setState({table:newTable1})
   }
   render() {
 
@@ -288,11 +303,10 @@ export default class App extends React.Component {
       </div>
       <div className="container" >
         <div className="customers">
-          <Productable products={this.state.table} deleteProduct={this.deleteProduct} addProduct={this.addProduct} />
+          <Productable products={this.state.table} deleteProduct={this.deleteProduct} addProduct={this.addProduct} decreaseProduct={this.decreaseProduct} />
         </div>
       </div>
     </>
 
   }
-
 }
