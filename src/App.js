@@ -267,7 +267,7 @@ export default class App extends React.Component {
         quantity: 1,
       })
     }
-    this.setState({ table: this.state.table})
+    this.setState({ table: this.state.table })
 
   }
   deleteProduct = (name) => {
@@ -280,20 +280,21 @@ export default class App extends React.Component {
     let newTable = this.state.table.map((product) => {
       if (product.name == name) {
         product.quantity += 1;
-
       }
       return product;
     })
     this.setState({ table: newTable })
   }
   decreaseProduct = (name) => {
-    let newTable1 = this.state.table.map((product) => {
-      if (product.name == name && product.quantity > 0) {
-        product.quantity -= 1;
+    const a = this.state.table.find((product) => { return product.name == name })
+    if (a) {
+      a.quantity -= 1;
+      if (a.quantity == 0) {
+        let  product = this.state.table.filter((product) => product.quantity !== 0)
+        return product
       }
-      return product;
-    })
-    this.setState({ table: newTable1 })
+    }
+    this.setState({ table: this.state.table })
   }
   render() {
 
