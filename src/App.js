@@ -291,10 +291,13 @@ export default class App extends React.Component {
       a.quantity -= 1;
       if (a.quantity == 0) {
         let  product = this.state.table.filter((product) => product.quantity !== 0)
-        return product
+        this.setSate({table:  product});
+      }else {
+      this.setState({ table: this.state.table });
       }
+      
     }
-    this.setState({ table: this.state.table })
+    
   }
   render() {
 
