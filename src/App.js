@@ -56,7 +56,10 @@ class Product extends React.Component {
             <div className="price">{this.props.price}</div>
             <div className="but">
               <button className="but-xem">xem</button>
-              <button className="but-mua">mua</button>
+              <button className="but-mua" onClick={() => {
+                this.props.buyProduct(this.props.name, this.props.price)
+              }}
+              >mua</button>
             </div>
           </div>
         </div>
@@ -65,16 +68,17 @@ class Product extends React.Component {
   }
 }
 
-class Productable extends React.Component {
+
+class Producttable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: props.products,
+      products: this.props.products,
     }
   }
 
   render() {
-    const total = this.state.products.reduce(
+    const total = this.props.products.reduce(
       (sum, product) => sum + product.price * product.quantity,
       0
     );
@@ -91,13 +95,13 @@ class Productable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.products.map((product, index) => {
+          {this.props.products.map((product, index) => {
             return (
               <tr key={product.id}>
 
-                <td className="text">{index + 1}</td>
-                <td className="text">{product.name}</td>
-                <td className="text">{product.price}</td>
+                <td className="text" >{index + 1}</td>
+                <td className="text" >{product.name}</td>
+                <td className="text" >{product.price}</td>
                 <td className="text">{product.quantity}</td>
                 <td className="text">
                   <button className="but-xem" onClick={() => {
@@ -115,7 +119,7 @@ class Productable extends React.Component {
                   }}>
                     Giảm
                   </button>
-                  
+
                 </td>
               </tr>
 
@@ -142,7 +146,7 @@ export default class App extends React.Component {
         },
         {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\2.png",
-          name: " sản phẩm 2",
+          name: "sản phẩm 2",
           price: 20000,
 
         },
@@ -154,7 +158,7 @@ export default class App extends React.Component {
         },
         {
           hinh: ".:\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\4.png",
-          name: " sản phẩm 4",
+          name: "sản phẩm 4",
           price: 40000,
 
         },
@@ -184,7 +188,7 @@ export default class App extends React.Component {
         },
         {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\9.png",
-          name: " sản phẩm 9",
+          name: "sản phẩm 9",
           price: 90000,
         },],
       list: [
@@ -252,9 +256,23 @@ export default class App extends React.Component {
         }],
     }
   }
+  buyProduct = (name, price) => {
+    const buyProduct = this.state.table.find((product) => product.name == name)
+    if (buyProduct) {
+      buyProduct.quantity += 1;
+    } else {
+      this.state.table.push({
+        name: name,
+        price: price,
+        quantity: 1,
+      })
+    }
+    this.setState({ table: this.state.table})
+
+  }
   deleteProduct = (name) => {
-    console.log(this)
     const products = this.state.table.filter((product) => product.name !== name);
+    console.log(products)
     this.setState({ table: products });
   }
   addProduct = (name) => {
@@ -262,19 +280,20 @@ export default class App extends React.Component {
     let newTable = this.state.table.map((product) => {
       if (product.name == name) {
         product.quantity += 1;
+
       }
       return product;
     })
     this.setState({ table: newTable })
   }
-  decreaseProduct = (name) =>{
-    let newTable1 = this.state.table.map((product) =>{
-      if(product.name == name){
-        product.quantity -=1;
+  decreaseProduct = (name) => {
+    let newTable1 = this.state.table.map((product) => {
+      if (product.name == name && product.quantity > 0) {
+        product.quantity -= 1;
       }
       return product;
     })
-    this.setState({table:newTable1})
+    this.setState({ table: newTable1 })
   }
   render() {
 
@@ -295,7 +314,7 @@ export default class App extends React.Component {
           <div className="row">
             {this.state.danhmuc.map((item) => {
               return (
-                <Product url={item.hinh} name={item.name} price={item.price} />
+                <Product url={item.hinh} name={item.name} price={item.price} buyProduct={this.buyProduct} />
               )
             })}
           </div>
@@ -303,7 +322,7 @@ export default class App extends React.Component {
       </div>
       <div className="container" >
         <div className="customers">
-          <Productable products={this.state.table} deleteProduct={this.deleteProduct} addProduct={this.addProduct} decreaseProduct={this.decreaseProduct} />
+          <Producttable products={this.state.table} deleteProduct={this.deleteProduct} addProduct={this.addProduct} decreaseProduct={this.decreaseProduct} />
         </div>
       </div>
     </>
