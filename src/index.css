@@ -15,7 +15,7 @@ img{
   overflow: auto;
 }
 
-a.link{
+.link{
   float:left;
   padding: 12px;
   color: black;
@@ -37,7 +37,7 @@ a.link{
 }
 /* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
 @media screen and (max-width: 500px) {
-  #list a {
+  #list {
     float: none;
     display: block;
     width: 100%;
@@ -45,18 +45,16 @@ a.link{
   }
 }
 
-.list1{
+.list{
   margin:10px;
   padding:0;
   width: 405px;
   height: 100%;
   background-color: white;
-  line-height: 300%;
-  
-
-  
+  line-height: 300%; 
+  font-size: medium;
 }
-.list1{
+.list{
   height:fit-content;
   border-style: groove;
   border-top-left-radius: 5px 5px;
@@ -79,13 +77,10 @@ a.link{
   
   
 }
-.menu-item {
-  
+.menu-item {  
   padding-left:15px;
   border-bottom-style:groove;
-  border-bottom-width:thin;
- 
-  
+  border-bottom-width:thin;  
 }
 .menu-item:first-child{
   background-color: DarkGrey;
@@ -112,69 +107,14 @@ a.link{
   background-color: darkgrey;
   color:white
 }
-
-.list2{
-  height:fit-content;
-  margin:10px;
-  padding:0;
-  width:405px;
-  background-color: white;
-  line-height: 300%;
-  letter-spacing: 1px;
-  
-
-}
-.list2 {
-  border-style: groove;
-  border-top-left-radius: 5px 5px;
-  border-top-right-radius: 5px 5px;
-  border-right-width: thin;
-  border-left-width: thin;
-  border-top-width: thin;
-  border-bottom-width: thin;
-  border-bottom-left-radius: 5px 5px;
-  border-bottom-right-radius: 5px 5px;
-}
-.menu-company{
-  display:block;
-  color:#000;
-  padding:8px 16px;
-  text-decoration: none;
-  letter-spacing: 1px;
-  line-height: 250%;
-  
-  
-}
-.menu-company:first-child{
-  background-color: DarkGrey;
-  color: black;
-  font-weight: bold;
-  border-bottom-width:thin;
-  border-bottom-style:groove;
-  border-top-left-radius: 5px 5px;
-  border-top-right-radius: 5px 5px;
-
-}
-.menu-company{
-  border-bottom-style:groove;
-  border-bottom-width:thin;
-}
-.menu-company:last-child{
-  border-bottom-style:none;
-  border-bottom-left-radius: 5px 5px;
-  border-bottom-right-radius:5px 5px;
-}
-.menu-company:hover:not(:first-child){
-  background-color: darkgrey;
-  color:white
-}
-#right_sidebar{
+.right_sidebar{
   flex-grow: 1;
   border-style: groove;
   border-bottom-width: thin;
   border-top-style: none;
   border-left-width: thin;
   border-right-width: thin;
+  font-size: medium;
 
 
 }
@@ -224,8 +164,6 @@ a.link{
 
 button:hover{
   background-color: gray;
-  
-
 }
 
 .product-col{
@@ -264,6 +202,9 @@ button:hover{
   margin-left:10px;
   margin-right:10px
 }
+.table{
+  border-left-width: medium;
+}
 .text{
   width:260px;
   border-style:groove;
@@ -273,6 +214,7 @@ button:hover{
   padding-top:15px;
   padding-bottom:15px;
   font-weight:500;
+  font-size: medium;
 }
 .text:last-child{
   border-right-width: none;
@@ -285,6 +227,7 @@ button:hover{
   padding-top:15px;
   padding-bottom:15px;
   padding-right: 5px;
+  font-size: medium;
 
 }
 .head{
