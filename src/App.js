@@ -58,8 +58,9 @@ class Product extends React.Component {
               <button className="but-xem">xem</button>
               <button className="but-mua" onClick={() => {
                 this.props.buyProduct(this.props.name, this.props.price)
-              }}
-              >mua</button>
+              }}>
+                mua
+              </button>
             </div>
           </div>
         </div>
@@ -67,8 +68,6 @@ class Product extends React.Component {
     );
   }
 }
-
-
 class Producttable extends React.Component {
   constructor(props) {
     super(props);
@@ -82,6 +81,8 @@ class Producttable extends React.Component {
       (sum, product) => sum + product.price * product.quantity,
       0
     );
+    const totalProduct = this.props.products.reduce(
+      (sum,product) =>sum + product.quantity,0)
     return (
 
       <table className="table">
@@ -98,24 +99,23 @@ class Producttable extends React.Component {
           {this.props.products.map((product, index) => {
             return (
               <tr key={product.id}>
-
                 <td className="text" >{index + 1}</td>
                 <td className="text" >{product.name}</td>
                 <td className="text" >{product.price}</td>
                 <td className="text">{product.quantity}</td>
                 <td className="text">
                   <button className="but-xem" onClick={() => {
-                    this.props.deleteProduct(product.name)
+                    this.props.deleteProduct(product.name)// gọi hàm và truyền tham số
                   }}>
                     Xóa
                   </button>
                   <button className="but-xem" onClick={() => {
-                    this.props.addProduct(product.name)
+                    this.props.addProduct(product.name)// gọi hàm và truyền tham số
                   }}>
                     Thêm
                   </button>
                   <button className="but-xem" onClick={() => {
-                    this.props.decreaseProduct(product.name)
+                    this.props.decreaseProduct(product.name) // gọi hàm và truyền tham số
                   }}>
                     Giảm
                   </button>
@@ -127,6 +127,9 @@ class Producttable extends React.Component {
           })}
           <tr>
             <th className="text-sum" colSpan={5}>Tổng tiền: {total}đ</th>
+          </tr>
+          <tr>
+            <th className="text-sum" colSpan={5}>Tổng sản phẩm:{totalProduct}</th>
           </tr>
         </tbody>
       </table>
@@ -293,14 +296,14 @@ export default class App extends React.Component {
       if (a.quantity == 0) {
         let product = this.state.table.filter((product) => product !== a)
         c = 1;
-        this.setState({table: product})
+        this.setState({ table: product })
       }
     }
     if (c == 0) {
-      this.setState({table: this.state.table});
+      this.setState({ table: this.state.table });
     }
   }
-  
+
   render() {
 
     return <>
@@ -332,6 +335,5 @@ export default class App extends React.Component {
         </div>
       </div>
     </>
-
   }
 }
