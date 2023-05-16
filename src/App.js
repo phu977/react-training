@@ -1,3 +1,4 @@
+
 import React from "react";
 
 class Header extends React.Component {
@@ -21,7 +22,6 @@ class Header extends React.Component {
 class Danhmuc extends React.Component {
   constructor(props) {
     super(props);
-
   }
   render() {
     return (
@@ -30,7 +30,9 @@ class Danhmuc extends React.Component {
           <div className="menu-item">{this.props.heading}</div>
           {this.props.list.map((item) => {
             return (
-              <div className=" menu-item">{item}</div>
+              <div className=" menu-item" onClick={() => {
+                this.props.filterProduct(item);
+              }}>{item}</div>
             );
           })}
         </div>
@@ -53,6 +55,8 @@ class Product extends React.Component {
               <img src={this.props.url} alt="product"></img>
             </div>
             <div>{this.props.name}</div>
+            <div>{this.props.type}</div>
+            <div>{this.props.provider}</div>
             <div className="price">{this.props.price}</div>
             <div className="but">
               <button className="but-xem">xem</button>
@@ -82,7 +86,7 @@ class Producttable extends React.Component {
       0
     );
     const totalProduct = this.props.products.reduce(
-      (sum,product) =>sum + product.quantity,0)
+      (sum, product) => sum + product.quantity, 0)
     return (
 
       <table className="table">
@@ -145,54 +149,72 @@ export default class App extends React.Component {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\1.png",
           name: "sản phẩm 1",
           price: 10000,
+          type: "Đồ gia dụng",
+          provider: "VietGap",
 
         },
         {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\2.png",
           name: "sản phẩm 2",
           price: 20000,
+          type: "Thực phẩm",
+          provider: "Chin su",
 
         },
         {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\3.png",
           name: " sản phẩm 3",
           price: 30000,
+          type: "Thời trang",
+          provider: "Milo",
 
         },
         {
           hinh: ".:\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\4.png",
           name: "sản phẩm 4",
           price: 40000,
+          type: "Mỹ phẩm",
+          provider: "Mỹ phẩm",
 
         },
         {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\5.png",
           name: "sản phẩm 5",
           price: 50000,
+          type: "Đồ gia dụng",
+          provider: "Milo",
 
         },
         {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\6.png",
           name: "sản phẩm 6",
           price: 60000,
+          type: "Thực phẩm",
+          provider: "Acecook",
 
         },
         {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\7.png",
           name: "sản phẩm 7",
           price: 70000,
+          type: "Thời trang",
+          provider: "Trung Nguyên",
 
         },
         {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\8.png",
           name: "sản phẩm 8",
           price: 80000,
+          type: "Mỹ phẩm",
+          provider: "Vion",
 
         },
         {
           hinh: ".\\01_HTML\\UITraining01\\UITraining01\\imgs\\products\\9.png",
           name: "sản phẩm 9",
           price: 90000,
+          type: "Đồ gia dụng",
+          provider: "Chin su"
         },],
       list: [
         {
@@ -304,8 +326,27 @@ export default class App extends React.Component {
     }
   }
 
-  render() {
+  filterProduct = (type) => {
+    // const b = this.state.danhmuc.filter((product)=> product.type == type)
+    // const e = this.state.list.map((item)=>{})
 
+    this.setState({ filterType: type })
+  }
+
+  filterProvider = (provider) =>{
+    this.setState({filterProvider: provider})
+  }
+
+  render() {
+    const { filterType, } = this.state;
+    let sanpham = this.state.danhmuc;
+    if (filterType) {
+      sanpham = sanpham.filter((item) => { return item.type == filterType })
+    }
+    const{filterProvider} = this.state;
+    if(filterProvider){
+      sanpham = sanpham.filter((item) =>{return item.provider == filterProvider})
+    }
     return <>
       <div className="container" id="header">
         <Header url={".\\01_HTML\\UITraining01\\UITraining01\\imgs\\banner.jpg"} list={["Đồ gia dụng", "Thực phẩm", "Thời trang", "Mỹ phẩm", "Liện hệ"]} />
@@ -314,16 +355,16 @@ export default class App extends React.Component {
         <div className="left_sidebar">
           {this.state.list.map((item) => {
             return (
-              <Danhmuc heading={item.heading} list={item.list} />
+              <Danhmuc heading={item.heading} list={item.list} filterProduct={this.filterProduct} filterProvider={this.filterProvider}/>
             )
           })}
         </div>
         <div className="right_sidebar">
           <div className="id">Danh mục sản phẩm</div>
           <div className="row">
-            {this.state.danhmuc.map((item) => {
+            {sanpham.map((item) => {             
               return (
-                <Product url={item.hinh} name={item.name} price={item.price} buyProduct={this.buyProduct} />
+                <Product url={item.hinh} name={item.name} price={item.price} type={item.type} provider={item.provider} buyProduct={this.buyProduct} />
               )
             })}
           </div>
